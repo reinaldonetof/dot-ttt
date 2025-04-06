@@ -12,10 +12,10 @@ const TTTRow = ({ rowIndex }: TTTRowProps) => {
   return (
     <View style={styles.row}>
       {Array.from({ length: 3 }).map((_ar, index) => (
-        <>
+        <React.Fragment key={index + rowIndex}>
           {index > 0 ? <Separator isHorizontal={false} /> : null}
-          <TTTSquare index={index + rowIndex} onPress={() => {}} value={""} />
-        </>
+          <TTTSquare index={index + rowIndex} />
+        </React.Fragment>
       ))}
     </View>
   );

@@ -1,49 +1,32 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacityProps, View } from "react-native";
-import TTTBox from "../../atoms/TTTBox";
-import { useDimensions } from "../../../../hooks/useDimensions";
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-} from "react-native-reanimated";
+import React, { useMemo } from "react";
+import TTTBox, { TTTBoxProps } from "../../atoms/TTTBox";
+import { useGameConfig } from "../../../../storage/useGameConfig";
+import { useGameRound } from "../../../../storage/useGameRound";
 
-interface TTTSquareProps {
-  value: string;
-  index: number;
-  onPress: TouchableOpacityProps["onPress"];
-}
+type TTTSquareProps = Pick<TTTBoxProps, "index">;
 
-const TTTSquare = ({ value, index, onPress = () => {} }: TTTSquareProps) => {
-  const { boxSize } = useDimensions();
+const TTTSquare = ({ index }: TTTSquareProps) => {
+  const { player1Symbol, player2Symbol } = useGameConfig();
+  const { turn, setGameRound, boxSelected } = useGameRound();
 
-  const style = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(1, { duration: 500 }),
-      fontSize: boxSize / 2,
-    };
-  });
+  const playerWhoSelected = boxSelected[index];
+  const value = useMemo(() => {
+    if (!playerWhoSelected) return undefined;
+    return playerWhoSelected === "player1" ? player1Symbol : player2Symbol;
+  }, [player1Symbol, player2Symbol, playerWhoSelected]);
+
+  const handlePress = () => {
+    setGameRound({ index, player: turn });
+  };
+
   return (
     <TTTBox
       testID={`TTTSquare-${value}-${index}`}
-      disabled={!!value}
-      onPress={onPress}
-    >
-      <Animated.Text style={style} allowFontScaling={false}>
-        {value}
-      </Animated.Text>
-      <View style={styles.indexContainer}>
-        <Text>{index}</Text>
-      </View>
-    </TTTBox>
+      onPress={handlePress}
+      index={index}
+      value={value}
+    />
   );
 };
 
 export default TTTSquare;
-
-const styles = StyleSheet.create({
-  indexContainer: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-  },
-});
