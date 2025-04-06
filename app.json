@@ -3,7 +3,7 @@
     "name": "dot-ttt",
     "slug": "dot-ttt",
     "version": "1.0.0",
-    "orientation": "portrait",
+    // "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
