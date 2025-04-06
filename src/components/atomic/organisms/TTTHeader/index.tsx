@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useDimensions } from "../../../../hooks/useDimensions";
+import { useGameRound } from "../../../../storage/useGameRound";
 
 interface TTTHeaderProps {
   onPressConfig: TouchableOpacityProps["onPress"];
@@ -15,6 +16,7 @@ interface TTTHeaderProps {
 
 const TTTHeader = ({ onPressConfig }: TTTHeaderProps) => {
   const { size, isPortrait } = useDimensions();
+  const { winner } = useGameRound();
 
   return (
     <View
@@ -26,7 +28,7 @@ const TTTHeader = ({ onPressConfig }: TTTHeaderProps) => {
         },
       ]}
     >
-      <Text style={styles.text}>It's your time!</Text>
+      <Text style={styles.text}>{winner || "It's your time!"}</Text>
       <TouchableOpacity onPress={onPressConfig}>
         <Ionicons name="options" size={24} color={"#e4effa"} />
       </TouchableOpacity>

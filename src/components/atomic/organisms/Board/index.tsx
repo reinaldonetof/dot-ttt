@@ -4,9 +4,11 @@ import { useDimensions } from "../../../../hooks/useDimensions";
 import TTTRow from "../TTTRow";
 import Separator from "../../atoms/Separator";
 import { PADDING_INNER, SEPARATOR_WIDTH } from "../../../constants";
+import { useGameRound } from "../../../../storage/useGameRound";
 
 const Board = () => {
   const { size } = useDimensions();
+  const { winner } = useGameRound();
 
   return (
     <View
@@ -15,6 +17,7 @@ const Board = () => {
         height: size,
         width: size,
       }}
+      pointerEvents={!!winner ? "none" : undefined}
     >
       <TTTRow rowIndex={1} />
       <Separator />
