@@ -13,6 +13,8 @@ export interface IUseGameConfig extends IUseGameConfigState {
 export interface IUseGameConfigState {
   player1?: PlayerTypes;
   player2?: PlayerTypes;
+  isPlayer1Cpu?: boolean;
+  isPlayer2Cpu?: boolean;
   player1Symbol?: PlayerSymbols;
   player2Symbol?: PlayerSymbols;
 }
@@ -22,4 +24,6 @@ export const INITIAL_STATE: IUseGameConfigState = {
   player2: undefined,
   player1Symbol: "❌",
   player2Symbol: "⭕",
+  isPlayer1Cpu: false,
+  isPlayer2Cpu: false,
 };

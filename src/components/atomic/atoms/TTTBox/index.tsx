@@ -19,9 +19,16 @@ export interface TTTBoxProps {
   value?: PlayerSymbols;
   index: number;
   onPress: TouchableOpacityProps["onPress"];
+  disabled?: TouchableOpacityProps["disabled"];
 }
 
-const TTTBox = ({ index, onPress, value, testID = "TTTBox" }: TTTBoxProps) => {
+const TTTBox = ({
+  index,
+  onPress,
+  value,
+  testID = "TTTBox",
+  disabled,
+}: TTTBoxProps) => {
   const { boxSize } = useDimensions();
 
   const style = useAnimatedStyle(() => {
@@ -35,7 +42,7 @@ const TTTBox = ({ index, onPress, value, testID = "TTTBox" }: TTTBoxProps) => {
     <TouchableOpacity
       testID={testID}
       style={[styles.box, { height: boxSize, width: boxSize }]}
-      disabled={!!value}
+      disabled={disabled}
       onPress={onPress}
     >
       <Animated.Text style={style} allowFontScaling={false}>

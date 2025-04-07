@@ -6,7 +6,8 @@ import { useGameRound } from "../../../../storage/useGameRound";
 type TTTSquareProps = Pick<TTTBoxProps, "index">;
 
 const TTTSquare = ({ index }: TTTSquareProps) => {
-  const { player1Symbol, player2Symbol } = useGameConfig();
+  const { player1Symbol, player2Symbol, isPlayer1Cpu, isPlayer2Cpu } =
+    useGameConfig();
   const { turn, setGameRound, boxSelected } = useGameRound();
 
   const playerWhoSelected = boxSelected[index];
@@ -25,6 +26,11 @@ const TTTSquare = ({ index }: TTTSquareProps) => {
       onPress={handlePress}
       index={index}
       value={value}
+      disabled={
+        !!value ||
+        (turn === "player1" && isPlayer1Cpu) ||
+        (turn === "player2" && isPlayer2Cpu)
+      }
     />
   );
 };

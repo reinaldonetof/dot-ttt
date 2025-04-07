@@ -12,7 +12,11 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="StartGame" component={StartGame} />
+        <Stack.Screen
+          name="StartGame"
+          component={StartGame}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="TTTGame"
           component={TTTGame}

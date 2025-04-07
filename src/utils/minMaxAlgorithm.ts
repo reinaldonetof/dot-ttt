@@ -75,7 +75,9 @@ export const getBestMove = ({
     player1Selection.length === 0 &&
     player2Selection.length === 0
   ) {
-    return 5;
+    const options = [1, 3, 5, 7, 9];
+    const randomChoice = options[Math.floor(Math.random() * options.length)];
+    return randomChoice;
   }
 
   const moves = getAvailableMoves(player1Selection, player2Selection);
