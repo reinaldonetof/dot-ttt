@@ -99,3 +99,7 @@ yarn test
 - CPU decisions through the Minimax algorithm
 - Random first moves (when enabled)
 
+
+### Video
+https://github.com/user-attachments/assets/7afc03d7-6e24-4ba9-b6d8-7e94a8b81a97
+
