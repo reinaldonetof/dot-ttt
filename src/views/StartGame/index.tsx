@@ -8,6 +8,7 @@ const StartGame = () => {
   const { setPlayer1, setPlayer2 } = useGameConfig();
   const { resetGameRound } = useGameRound();
   const navigation = useNavigation();
+
   const handleSelect = (
     mode: "pvp" | "player_vs_cpu" | "cpu_vs_player" | "cpu_vs_cpu",
   ) => {
@@ -29,7 +30,6 @@ const StartGame = () => {
       setPlayer2("cpu");
     }
     navigation.navigate("TTTGame");
-    // Aqui você pode navegar para o jogo com o modo selecionado
   };
 
   return (
