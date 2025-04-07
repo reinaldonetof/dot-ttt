@@ -22,43 +22,51 @@ const ModalSelectSymbols = ({ visible, onClose }: ModalSelectSymbolsProps) => {
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalBox}>
-          <Text style={styles.title}>
-            Do you want to change the symbol of each player?
-          </Text>
+    // Fix problem Modals + Reanimated in New Architecture
+    // https://github.com/software-mansion/react-native-reanimated/issues/6659#issuecomment-2704931585
+    <View>
+      <Modal visible={visible} animationType="slide" transparent>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalBox}>
+            <Text style={styles.title}>
+              Do you want to change the symbol of each player?
+            </Text>
 
-          <PlayerSymbolButton
-            player="Player 1"
-            symbol={player1Symbol}
-            onPress={() => setSelectingPlayer(selectingPlayer === 1 ? null : 1)}
-          />
-          {selectingPlayer === 1 && (
-            <SymbolOptions
-              onSelect={handleSelect}
-              playerSymbolToFilter={player2Symbol}
+            <PlayerSymbolButton
+              player="Player 1"
+              symbol={player1Symbol}
+              onPress={() =>
+                setSelectingPlayer(selectingPlayer === 1 ? null : 1)
+              }
             />
-          )}
+            {selectingPlayer === 1 && (
+              <SymbolOptions
+                onSelect={handleSelect}
+                playerSymbolToFilter={player2Symbol}
+              />
+            )}
 
-          <PlayerSymbolButton
-            player="Player 2"
-            symbol={player2Symbol}
-            onPress={() => setSelectingPlayer(selectingPlayer === 2 ? null : 2)}
-          />
-          {selectingPlayer === 2 && (
-            <SymbolOptions
-              onSelect={handleSelect}
-              playerSymbolToFilter={player1Symbol}
+            <PlayerSymbolButton
+              player="Player 2"
+              symbol={player2Symbol}
+              onPress={() =>
+                setSelectingPlayer(selectingPlayer === 2 ? null : 2)
+              }
             />
-          )}
+            {selectingPlayer === 2 && (
+              <SymbolOptions
+                onSelect={handleSelect}
+                playerSymbolToFilter={player1Symbol}
+              />
+            )}
 
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <Text style={styles.closeText}>Done</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <Text style={styles.closeText}>Done</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </Modal>
+      </Modal>
+    </View>
   );
 };
 

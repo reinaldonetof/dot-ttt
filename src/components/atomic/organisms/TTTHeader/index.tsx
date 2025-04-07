@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import {
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -34,6 +35,9 @@ const TTTHeader = ({ onPressConfig, onPressBack }: TTTHeaderProps) => {
         !isPortrait && {
           maxWidth: size / 3,
           ...styles.textViewLandscape,
+        },
+        Platform.OS === "android" && {
+          paddingTop: 48,
         },
       ]}
     >
