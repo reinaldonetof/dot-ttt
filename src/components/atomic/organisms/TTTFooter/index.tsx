@@ -6,7 +6,7 @@ import { useDimensions } from "../../../../hooks/useDimensions";
 
 const TTTFooter = () => {
   const { isPortrait } = useDimensions();
-  const { resetGameRound } = useGameRound();
+  const { resetGameRound, winner } = useGameRound();
 
   return (
     <View
@@ -16,7 +16,14 @@ const TTTFooter = () => {
       }}
     >
       <PlayersSymbolContainer />
-      <TouchableOpacity onPress={resetGameRound} style={styles.button}>
+      <TouchableOpacity
+        disabled={!winner}
+        onPress={resetGameRound}
+        style={{
+          ...styles.button,
+          opacity: winner ? 1 : 0.5,
+        }}
+      >
         <Text>Reset Game</Text>
       </TouchableOpacity>
     </View>
@@ -35,8 +42,15 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#e4effa",
-    padding: 8,
-    borderRadius: 8,
+    borderRadius: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    marginVertical: 10,
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 6,
+    elevation: 3,
   },
 });

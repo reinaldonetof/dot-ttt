@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,11 +12,20 @@ import { useGameRound } from "../../../../storage/useGameRound";
 
 interface TTTHeaderProps {
   onPressConfig: TouchableOpacityProps["onPress"];
+  onPressBack: TouchableOpacityProps["onPress"];
 }
 
-const TTTHeader = ({ onPressConfig }: TTTHeaderProps) => {
+const TTTHeader = ({ onPressConfig, onPressBack }: TTTHeaderProps) => {
   const { size, isPortrait } = useDimensions();
-  const { winner } = useGameRound();
+  const { winner, turn } = useGameRound();
+
+  const title = useMemo(() => {
+    if (winner && winner !== "draw") {
+      return `${winner[0].toUpperCase() + winner.slice(1)} Win 🎉`;
+    }
+    if (winner === "draw") return "It's a draw!";
+    return `${turn[0].toUpperCase() + turn.slice(1)}'s turn`;
+  }, [turn, winner]);
 
   return (
     <View
@@ -28,7 +37,10 @@ const TTTHeader = ({ onPressConfig }: TTTHeaderProps) => {
         },
       ]}
     >
-      <Text style={styles.text}>{winner || "It's your time!"}</Text>
+      <TouchableOpacity onPress={onPressBack}>
+        <Ionicons name="chevron-back" size={24} color={"#e4effa"} />
+      </TouchableOpacity>
+      <Text style={styles.text}>{title}</Text>
       <TouchableOpacity onPress={onPressConfig}>
         <Ionicons name="options" size={24} color={"#e4effa"} />
       </TouchableOpacity>

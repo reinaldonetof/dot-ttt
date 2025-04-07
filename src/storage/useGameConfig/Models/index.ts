@@ -1,6 +1,17 @@
 export type PlayerTypes = "person" | "cpu";
 
-export type PlayerSymbols = "❌" | "⭕" | "🚀" | "🚗" | "🚢" | "👍" | "👎";
+export const PLAYER_SYMBOLS = [
+  "❌",
+  "⭕",
+  "🚀",
+  "🚗",
+  "👍",
+  "👎",
+  "🐶",
+  "🐱",
+] as const;
+
+export type PlayerSymbols = (typeof PLAYER_SYMBOLS)[number];
 
 export interface IUseGameConfig extends IUseGameConfigState {
   setPlayer1: (player: PlayerTypes) => void;
