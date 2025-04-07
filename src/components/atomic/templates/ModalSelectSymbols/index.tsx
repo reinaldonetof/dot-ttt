@@ -34,14 +34,24 @@ const ModalSelectSymbols = ({ visible, onClose }: ModalSelectSymbolsProps) => {
             symbol={player1Symbol}
             onPress={() => setSelectingPlayer(selectingPlayer === 1 ? null : 1)}
           />
-          {selectingPlayer === 1 && <SymbolOptions onSelect={handleSelect} />}
+          {selectingPlayer === 1 && (
+            <SymbolOptions
+              onSelect={handleSelect}
+              playerSymbolToFilter={player2Symbol}
+            />
+          )}
 
           <PlayerSymbolButton
             player="Player 2"
             symbol={player2Symbol}
             onPress={() => setSelectingPlayer(selectingPlayer === 2 ? null : 2)}
           />
-          {selectingPlayer === 2 && <SymbolOptions onSelect={handleSelect} />}
+          {selectingPlayer === 2 && (
+            <SymbolOptions
+              onSelect={handleSelect}
+              playerSymbolToFilter={player1Symbol}
+            />
+          )}
 
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeText}>Done</Text>

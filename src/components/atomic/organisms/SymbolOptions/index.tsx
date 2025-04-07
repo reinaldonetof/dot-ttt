@@ -4,16 +4,24 @@ import {
   PLAYER_SYMBOLS,
   PlayerSymbols,
 } from "../../../../storage/useGameConfig/Models";
+import { useGameConfig } from "../../../../storage/useGameConfig";
 
 type SymbolOptionsProps = {
   onSelect: (symbol: PlayerSymbols) => void;
+  playerSymbolToFilter?: PlayerSymbols;
 };
 
-const SymbolOptions = ({ onSelect }: SymbolOptionsProps) => {
+const SymbolOptions = ({
+  onSelect,
+  playerSymbolToFilter,
+}: SymbolOptionsProps) => {
+  const data = PLAYER_SYMBOLS.filter(
+    (symbol) => symbol !== playerSymbolToFilter,
+  );
   return (
     <FlatList
       horizontal
-      data={PLAYER_SYMBOLS}
+      data={data}
       keyExtractor={(item) => item}
       contentContainerStyle={styles.container}
       renderItem={({ item }) => (
