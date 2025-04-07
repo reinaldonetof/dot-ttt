@@ -4,9 +4,11 @@ import { useDimensions } from "../../hooks/useDimensions";
 import Board from "../../components/atomic/organisms/Board";
 import TTTHeader from "../../components/atomic/organisms/TTTHeader";
 import TTTFooter from "../../components/atomic/organisms/TTTFooter";
+import CpuTurn from "./CpuTurn";
 
 const TTTGame = () => {
   const { isPortrait } = useDimensions();
+
   return (
     <SafeAreaView
       style={[styles.safeAreaView, !isPortrait && styles.safeAreaLandscape]}
@@ -14,6 +16,7 @@ const TTTGame = () => {
       <TTTHeader onPressConfig={() => {}} />
       <Board />
       <TTTFooter />
+      <CpuTurn />
     </SafeAreaView>
   );
 };
