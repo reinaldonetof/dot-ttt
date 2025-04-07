@@ -8,6 +8,8 @@ Welcome to **Tic Tac Toe Unbeatable** — a React Native game where you can play
 
 Built with a strong focus on gameplay experience and an unbeatable AI using the **Minimax algorithm**.
 
+![Screenshot 2025-04-07 at 02 39 00](https://private-user-images.githubusercontent.com/47038980/430800371-0dd96c90-3d5c-47da-9d33-c06f59ad8b4b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQwMDQ4MzUsIm5iZiI6MTc0NDAwNDUzNSwicGF0aCI6Ii80NzAzODk4MC80MzA4MDAzNzEtMGRkOTZjOTAtM2Q1Yy00N2RhLTlkMzMtYzA2ZjU5YWQ4YjRiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA3VDA1NDIxNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTAzNTljMWFmZjVlOWJhNmJhMjE1MmVlMzUyZjUzYzEyODUxYWUxOTM5OTViZjdhNzhmYjc0N2YzNjA3MmFmNDcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.zcY5Eo_sjeJ9vbb5qcE-KRvWJ3b9autxd-fVDJFHLus)
+
 ## Getting Started
 
 #### 1. Clone the repo
@@ -92,3 +94,4 @@ yarn test
 - Draw detection
 - CPU decisions through the Minimax algorithm
 - Random first moves (when enabled)
+
