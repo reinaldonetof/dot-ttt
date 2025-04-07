@@ -1,17 +1,42 @@
 import React from "react";
-import { Button, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import PlayersSymbolContainer from "../../molecules/PlayersSymbolContainer";
 import { useGameRound } from "../../../../storage/useGameRound";
+import { useDimensions } from "../../../../hooks/useDimensions";
 
 const TTTFooter = () => {
+  const { isPortrait } = useDimensions();
   const { resetGameRound } = useGameRound();
 
   return (
-    <View>
+    <View
+      style={{
+        ...styles.container,
+        ...(!isPortrait && styles.containerLandscape),
+      }}
+    >
       <PlayersSymbolContainer />
-      <Button title="Reset game" onPress={() => resetGameRound()} />
+      <TouchableOpacity onPress={resetGameRound} style={styles.button}>
+        <Text>Reset Game</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 export default TTTFooter;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    gap: 24,
+  },
+  containerLandscape: {
+    justifyContent: "space-around",
+  },
+  button: {
+    backgroundColor: "#e4effa",
+    padding: 8,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+});
