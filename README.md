@@ -65,6 +65,10 @@ A modal interface allows players to select their icons dynamically before starti
 
 💡 TypeScript – provides type safety and better developer experience
 
+🐻 Zustand – used for lightweight and efficient global state management through clean custom hooks
+
+🧩 Atomic Design – component architecture follows Atomic Design principles for better scalability and reusability
+
 🤖 Minimax Algorithm – for an unbeatable AI player
 
 🧪 Jest – for unit testing logic such as win conditions and AI decisions
