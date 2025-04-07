@@ -12,9 +12,10 @@ const Separator = ({ isHorizontal = true }: SeparatorProps) => {
   const width = size - PADDING_INNER * 2 - SEPARATOR_WIDTH * 2;
   return (
     <View
-      style={[
-        styles.separator,
-        isHorizontal
+      testID="separator"
+      style={{
+        ...styles.separator,
+        ...(isHorizontal
           ? {
               width,
               height: SEPARATOR_WIDTH,
@@ -22,8 +23,8 @@ const Separator = ({ isHorizontal = true }: SeparatorProps) => {
           : {
               width: SEPARATOR_WIDTH,
               height: boxSize,
-            },
-      ]}
+            }),
+      }}
     />
   );
 };

@@ -6,4 +6,10 @@ module.exports = {
     "prettier/prettier": "error",
   },
   ignorePatterns: ["/dist/*"],
+  overrides: [
+    {
+      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      extends: ["plugin:testing-library/react"],
+    },
+  ],
 };
